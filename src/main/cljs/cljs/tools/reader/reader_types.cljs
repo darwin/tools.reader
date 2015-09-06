@@ -282,7 +282,7 @@ logging frames. Called when pushing a character back."
   (when (indexing-reader? rdr)
     (== 1 (get-column-number rdr))))
 
-(defn log-source*
+(defn ^:dynamic log-source*
   [reader f]
   (let [buffer (:buffer @(.-frames reader))]
     (try
