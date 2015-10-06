@@ -397,7 +397,7 @@
 (defn- read-meta
   "Read metadata and return the following object with the metadata applied"
   [rdr _ opts pending-forms]
-  (log-source rdr
+  ;(log-source rdr
     (let [[line column] (starting-line-col-info rdr)
           m (desugar-meta (read* rdr true nil opts pending-forms))]
       (when-not (map? m)
@@ -410,7 +410,7 @@
             (if (implements? IWithMeta o)
               (with-meta o (merge (meta o) m))
               (reset-meta! o m)))
-          (reader-error rdr "Metadata can only be applied to IMetas"))))))
+          (reader-error rdr "Metadata can only be applied to IMetas")))));)
 
 (defn- read-set
   [rdr _ opts pending-forms]
